@@ -1,0 +1,414 @@
+
+*
+{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+}
+
+.jaja
+{
+    padding-bottom: 100px;
+}
+.bx-wrapper
+{
+    background-color:rgb(133,212,183);
+    border:none!important;
+    box-shadow: none!important;
+}
+
+.galeria1
+{
+    background-color: rgb(133,212,183);
+}
+
+.galeria img
+{
+    width: 300px;
+    height: auto;
+}
+
+header
+{
+    width: 100%;
+    height: 80px;
+    background-color:rgb(133,212,183);
+}
+
+.logo
+{
+    width: 300px;
+    height: 55px;
+    margin-top: 10px;
+    margin-left:10px;
+}
+
+.navegacion
+{
+    float: right;
+}
+
+.navegacion li
+{
+    display: inline-block;
+    margin-top:16px;
+
+    width: 180px;
+    height: 36px;
+    text-align: center;
+    padding-top: 14px;
+    margin-left: 5px;
+}
+
+.navegacion a 
+{
+    color: white;
+    font-weight: bold;
+    text-decoration: none; /*para sacar los textos subrayados*/
+}
+.landing
+{
+    background-color: rgb(109,204,170);
+    width: 100%;
+    height: 550px;
+    padding-bottom: 150px;
+    
+}
+
+.landing_img
+{
+    width: 900px;
+    height: 400px;
+    margin-left: 230px;
+    margin-top: 16px;
+    display: block;
+    margin:auto;
+}
+
+.Contacto{
+    color: white;
+    padding-top: 50px;
+    margin-left: 20px;
+    font-size: 20px;
+    float: left;
+
+}
+
+.eslogan_perris{
+    color: white;
+    margin-bottom: 20px;
+    padding-left: 270px;
+    font-size: 20px;
+    float: left; 
+}
+
+.seccionA{
+float: left;
+}
+
+.seccionB{
+    float: right;
+    margin-right:120px;
+}
+
+.titulo {
+    margin-left: 500px; 
+}
+
+.subtit { 
+    margin-left: 558px; 
+    color: gray;
+}
+
+.hr {
+    width: 50px;
+    margin-left: 573px; 
+    color: black;
+}
+
+.text1 {
+    margin-left: 71px; 
+    color: black;
+}
+
+.text2 {
+    margin-left: 373px; 
+    color: black;
+}
+
+.fotor img {
+    margin-left: 315px; 
+    width: 310px;
+    height: 196px;
+}
+
+.header2 {
+   width: 100%;
+   height: 80px;
+   background-color:rgb(204, 204, 204);
+}
+
+.text3 {
+    text-align: center;
+}
+
+.fotoc img {
+    margin-left: 670px;
+    width: 310px;
+    height: 185px;
+    margin-top: -1200px;
+    margin-bottom: 170px;
+}
+
+.titulo2{
+    margin-left: 550px;
+    margin-bottom: 100px;
+    margin-top: -130px;
+}
+
+.subtit2{
+    margin-left: 554px;
+    margin-bottom: 100px;
+    margin-top: -100px;
+    color: gray;
+}
+
+.hr2{
+    margin-left: 556px;
+    margin-bottom: 100px;
+    margin-top: -100px;
+    width: 50px;
+    color: black;
+}
+
+.text10{
+    color: black;
+    margin-left: 556px;
+    margin-bottom: 100px;
+    margin-top: -95px;
+}
+
+.text11{
+    color: black;
+    margin-left: 556px;
+    margin-bottom: 100px;
+    margin-top: -95px;
+}
+
+.boton {
+    margin-left: 670px;
+    margin-bottom: 10px;
+    margin-top: 90px;
+    color: black;
+}
+
+.financiamiento{
+    margin-right: 202px;
+    font-size: 15px;
+    margin-top: -312px;
+    float: right;
+    font-family: Arial, Helvetica, sans-serif;
+    color: grey;
+    
+}
+
+.botonC{
+    float: right;
+}
+
+.botonC li{
+    display: inline-block;
+    margin-left: 20px;
+    margin-top:20px;
+    background-color: #d61010;
+    width: 100px;
+    height: 34px;
+    text-align: center;
+    padding-top:15px;
+    transition: border-radius 0.5s;
+}
+
+
+.social {
+    padding-top: 53px;
+    float:left;
+    padding-left: 190px;
+
+}
+
+.social li{
+    display: inline-block;
+    margin-left:20px;
+}
+
+.social li img{
+width: 40px;
+height: 40px;
+}
+
+
+footer{
+    height: 80px;
+    background-color: #9e9e9e;
+    
+}
+
+.registroperris{
+
+    background-color:rgb(133,212,183);
+    padding-left: 500px;
+    padding-bottom: 30px;
+}
+
+label.error {
+    position: absolute;
+}
+
+.galeria a img {
+    width: 280px;
+    height: 280px;
+}
+
+@media (max-width:1024px) {
+
+    .Contacto{
+        margin-left: 100px;
+    }
+    
+    .eslogan_perris{
+        
+        padding-right: 270px;
+        padding-left: 150px;
+    }
+
+    .registroperris
+    {
+        text-align: center;
+        padding-left: 10px;
+        padding-top: 80px;
+    }
+
+    .landing_img {
+        width: 100%;
+        height: auto;
+    }
+
+    .social {
+        float:none;
+        padding-left: 58px;
+    }
+
+    header {
+        height: 350px;
+        padding-bottom: 80px;
+    }
+
+    .navegacion {
+        float:none;
+        width: 80%;
+        margin-right: 0;
+        margin:auto;
+    }
+
+    .navegacion li {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .landing {
+        height: auto;
+        padding-bottom: 30px;
+    }
+
+
+    .titulo{
+        margin-left: 20;
+        margin: auto;
+    }
+
+    .subtit{
+        margin-left: 20;
+        margin: auto;
+    }
+
+    .hr{
+        margin-left: 0;
+        margin: auto;
+    }
+
+    .text1{
+        margin-left: 20;
+        margin: auto;
+    }
+
+    .text2{
+        margin-left: 20;
+        margin: auto;
+    }
+
+    .fotor img{
+        margin-left: 10px;
+        margin: auto;
+    }
+
+    .fotoc img{
+        margin-left: 10px;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    .titulo2{
+        margin-left: 10px;
+        margin: auto;
+        margin-top: 20px;
+    }
+
+    .subtit2{
+        margin-left: 10px;
+        margin: auto;
+        margin-top: 5px;
+    }
+
+    .hr2{
+        margin-left: 10px;
+        margin: auto;
+    }
+
+    .text10{
+        margin-left: 10px;
+        margin: auto;
+    }
+
+    .text11{
+        margin-left: 10px;
+        margin: auto;
+        margin-top: 3px;
+    }
+
+    .boton{
+        margin-left: 10px;
+        margin: auto;
+        margin-top: 100px;
+    }
+
+    .header2{
+        margin-left: 10px;
+        margin: auto;
+    }
+
+    .text3{
+        margin-left: 10px;
+        margin: auto;
+    }
+    .galeria1 {
+        display: block;
+        float: left;
+        padding-left: 65px;
+        padding-bottom: 10px;
+    }
+}

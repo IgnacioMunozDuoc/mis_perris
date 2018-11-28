@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mis Perris</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <link rel="stylesheet" href="{% static 'core/css/estilosmisperris.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.3.5/jquery.fancybox.min.js"></script>
+    <script src="{% static 'core/js/inicializacionmisperris.js' %}"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/icono.png' %}"/>
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/3.9.0/firebase-messaging.js"></script>
+    <script>
+    // Initialize Firebase
+  // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyAM-gOFYP6xW2j22npwNdthQgKtctLnH3k",
+        authDomain: "mis-perris-237d2.firebaseapp.com",
+        databaseURL: "https://mis-perris-237d2.firebaseio.com",
+        projectId: "mis-perris-237d2",
+        storageBucket: "mis-perris-237d2.appspot.com",
+        messagingSenderId: "347078296310"
+    };
+    firebase.initializeApp(config);
+
+    //OBTENEMOS UN OBJETO MESSAGING
+    const messaging = firebase.messaging();
+    //vamos a registra nuestro serviceworker con firebase
+    navigator
+    .serviceWorker
+    .register('./serviceworker.js')
+    .then(function(register) {
+        //le pasamos el objeto registrado con el serviceworker a firebase
+        messaging.useServiceWorker(register);
+
+        //mostramos al usuario una ventana para preguntarle si acepta
+        //que le enviemos notificaciones al navegador
+        messaging
+        .requestPermission()
+        //este then se ejecutara en caso que el usuario haya aceptado
+        //que le mostremos notificaciones
+        .then(function() {
+            console.log("el usuario aceptó el envío de notificaciones");
+            //una vez aceptado el permiso, se genera un token
+            //unico que nos identifica como usuarios
+            //asdfad23243jkjbier3434scsdfer
+            return messaging.getToken();
+        })
+        //el segundo then recibe el token generado en el anterior
+        .then(function(token) {
+            console.log(token)
+
+            //en este paso es necesario enviar el token a nuestra aplicacion
+            //de django para almacenarlo
+            //$.post
+            fetch('api/agregar-token/', {
+                method:'POST',
+                body:JSON.stringify({
+                    'token':token
+                })
+            })
+            .then(function() {
+                console.log("token enviado")
+            })
+
+        })
+        //los then anteriores solo se ejecutaran cuando el usuario haya aceptado
+        //que le mostremos notificaciones
+        .catch(function(err){
+            //este catch se ejecuta cuando el usuario no haya aceptado
+            //que le mostremos notificaciones
+            console.log("El usuario no ha aceptado conceder permisos : " + err)
+        })
+
+    })
+
+    //recibimos el mensaje que viene desde firebase
+    messaging.onMessage(function(payload) {
+        //esta funcion se ejecuta cuando se recibe la notificacion
+        //dentro de payload viene el mensaje 
+        
+        var options = {
+            body:payload.notification.body,
+            icon:payload.notification.icon
+        }
+
+        var title = payload.notification.title
+
+        //cuando llegue el mensaje mostramos la notificacion
+        var mensaje = new Notification(title, options)
+        
+    })
+
+    
+    </script>
+
+</head>
+<body>
+    <header>
+        <img class="logo" src="{% static 'core/img/logo.png' %}" alt="logo">
+        <ul class ="navegacion">
+            <li>
+                <a href="{% url 'home' %}">Inicio</a>
+            </li>
+            <li>
+                <a href="{% url 'galeria' %}">Galeria</a>
+            </li>
+            <li>
+                <a href="{% url 'formulario' %}">Registrarse</a>
+            </li>
+            {% if request.user.is_authenticated %}
+            <li>
+                <a href="{% url 'agregar_mascota' %}">Registrar Mascota</a>
+            </li>
+            <li>
+                <a href="{% url 'listar_mascotas' %}">Listar Mascota</a>
+            </li>
+            <li>
+                <a href="{% url 'logout' %}">Salir</a>
+            </li>
+            {% else %}
+            <li>
+                <a href="{% url 'login' %}">Login</a>
+            </li>
+            {% endif %}
+        </ul>
+    </header>
+    <div class="landing">
+        <div class="slider">
+            <div>
+                    <img title="felices de poder rescatar este hermoso cachorro" class="landing_img" src="{% static 'core/img/perro.png' %}" alt="perro">
+            </div>
+            <div>
+                    <img title="Comparta la felicidad con este cachorro" class="landing_img" src="{% static 'core/img/Adoptados/Apolo.jpg' %}" alt="perro apolo">
+            </div>
+            <div>
+                    <img title="Su nombre tan lindo como su apariencia" class="landing_img" src="{% static 'core/img/Adoptados/Duque.jpg' %}" alt="perro duque">
+            </div>
+            <div>
+                    <img title="Pareciera que tuviera nombre de gato pero es un lindo perrito" class="landing_img" src="{% static 'core/img/Adoptados/Tom.jpg' %}" alt="perro Tom">
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+    <div class="jaja">
+        <h1 class="Contacto">
+            +56 9 98765431  
+        </h1>
+        <h3 class="eslogan_perris">
+            <br>
+            <br>
+            Rescate y adopcion de perros callejeros
+        </h3>
+        <ul class="social">
+            <li> <img src="{% static 'core/img/socialfacebook.png' %}" alt="facebook"></li>
+            <li> <img src="{% static 'core/img/socialplus.png' %}" alt="Google"></li>
+            <li> <img src="{% static 'core/img/social-inst.png' %}" alt="instragram"></li>
+            <li> <img src="{% static 'core/img/Correo.png' %}" alt="Correo"></li>
+    
+        </ul>
+    </div>
+</div>
+
+
+<div class="contenido">
+    {% block contenido %}
+    
+    {% endblock contenido %}
+
+</div>
+
+<footer>
+        <br>
+        <h3 class="color_blanco centrar_texto">Desarrollo Web y Mobile</h3>
+</footer>
+</body>
+</html>

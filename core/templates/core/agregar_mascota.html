@@ -1,0 +1,64 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+
+
+
+<h2>Agregar Mascota</h2>
+<form action="" id="FormularioMascotas" method="POST" enctype="multipart/form-data">
+    
+    {% csrf_token %}
+    <label for="txtNombre"> Nombre </label>
+    <input type="text" placeholder="Spike" id="txtNombre" name="txtNombre">
+    <br>
+        <!--cboRaza de base de datos-->
+        <label for="">Raza</label>
+            <select name="cboRaza" id="cboRaza">
+                <option value="">Seleccionar</option>
+                {% for m in perri %}
+  
+                   <option value="{{ m.id }}">{{m.nombre}}</option>
+
+                {% endfor %}
+            </select>
+    <br>
+        <!--cboGenero de base de datos-->
+        <label for="">Genero</label>
+            <select name="cboGenero" id="cboGenero">
+                <option value="">Seleccionar</option>
+                {% for m in sexo %}
+  
+                   <option value="{{ m.id }}">{{m.genero}}</option>
+
+                {% endfor %} 
+            </select>
+    <br>
+
+        <label for="txtFechaI">Fecha De Ingreso</label>
+        <input type="date" placeholder="Ej: 03/10/2018" id="txtFechaI" name="txtFechaI">
+
+    <br>
+
+        <label for="txtFechaN">Fecha De Nacimiento</label>
+        <input type="date" placeholder="Ej: 03/10/2018" id="txtFechaN" name="txtFechaN">
+    <br>
+
+        <label for="txtImagen">Subir Imagen</label>
+        </th><input type="file"  id="txtFoto" name="txtFoto">
+    <br>
+        <!--cboEstado de base de datos-->
+        <label for="">Estado</label>
+            <select name="cboEstado" id="cboEstado">
+                <option value="">Seleccionar</option>
+                {% for m in estado %}
+  
+                   <option value="{{ m.id }}">{{m.TipoEstado}}</option>
+
+                {% endfor %} 
+            </select>
+    <br>
+    <input type="submit" name="btnGuardar" id="btnGuardar" value="Guardar">
+</form> 
+<h3>{{ mensaje }}</h3>
+
+{% endblock contenido %}

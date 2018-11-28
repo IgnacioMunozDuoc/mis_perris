@@ -1,0 +1,87 @@
+{% extends 'core/base.html' %}
+
+{% block contenido %}
+
+
+
+
+
+<h2>Modificar Mascota</h2>
+<form action="" id="FormularioMascotas" method="POST">
+    
+    {% csrf_token %}
+
+    <input type="hidden" name="txtId" value="{{ mascota.id }}">
+
+    <label for="txtNombre"> Nombre </label>
+    <input type="text" placeholder="Spike" id="txtNombre" name="txtNombre" value="{{ mascota.nombre }}">
+    <br>
+        <!--cboRaza de base de datos-->
+        <label for="">Raza</label>
+            <select name="cboRaza" id="cboRaza">
+                <option value="">Seleccionar</option>
+                {% for m in raza %}
+  
+                   <option 
+                                   
+                   {% if m.id == mascota.raza.id %}
+                   {{'selected'}}
+                   {% endif %}  
+                   
+                   value="{{ m.id }}">{{m.nombre}}</option>
+
+                {% endfor %}
+            </select>
+    <br>
+        <!--cboGenero de base de datos-->
+        <label for="">Genero</label>
+            <select name="cboGenero" id="cboGenero">
+                <option value="">Seleccionar</option>
+                {% for m in sexo %}
+
+                   <option
+                   
+                   {% if m.id == mascota.genero.id %}
+                   {{'selected'}}
+                   {% endif %}
+
+                   value="{{ m.id }}">{{m.genero}}</option>
+
+                {% endfor %} 
+            </select>
+    <br>
+
+        <label for="txtFechaI">Fecha De Ingreso</label>
+        <input type="date" placeholder="Ej: 03/10/2018" id="txtFechaI" name="txtFechaI" value="{{ mascota.fechaIngreso }}"> 
+
+    <br>
+
+        <label for="txtFechaN">Fecha De Nacimiento</label>
+        <input type="date" placeholder="Ej: 03/10/2018" id="txtFechaN" name="txtFechaN" value="{{ mascota.fechaNacimiento }}">
+    <br>
+
+        <label for="txtImagen">Subir Imagen</label>
+        </th><input type="file"  id="txtFoto" name="txtFoto" value="{{ mascota.imagen }}">
+    <br>
+        <!--cboEstado de base de datos-->
+        <label for="">Estado</label>
+            <select name="cboEstado" id="cboEstado">
+                <option value="">Seleccionar</option>
+                {% for m in estado %}
+  
+                   <option
+                   {% if m.id == mascota.estado.id %}
+                   {{'selected'}}
+                   {% endif %}
+                   
+
+                   value="{{ m.id }}">{{m.TipoEstado}}</option>
+
+                {% endfor %} 
+            </select>
+    <br>
+    <input type="submit" name="btnGuardar" id="btnGuardar" value="Modificar">
+</form> 
+<h3>{{ mensaje }}</h3>
+
+{% endblock contenido %}

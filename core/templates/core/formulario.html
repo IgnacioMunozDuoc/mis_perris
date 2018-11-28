@@ -1,0 +1,118 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+{% block contenido %} 
+   
+
+<h2>Agregar Persona</h2>
+
+        <form action="" id="FormularioMascotas" method="POST">
+        {% csrf_token %}           
+                <tr>
+                   <th><label for="txtCorreo"> Correo Electronico </label></th>
+                   <th><input type="email" placeholder="Ej: jav.mif@18gmail.com" id="txtCorreo" name="txtCorreo"></th>
+                </tr>
+
+                <br><!--separacion-->
+
+                <tr>
+                   <th><label for="txtRun">Run</label></th>
+                   <th><input type="number" placeholder="Ej: 202225548" id="txtRun" name="txtRun"></th>
+                </tr>
+
+                <br><!--separacion-->
+
+                <tr>
+                   <th> <label for="txtNombreCompleto">Nombre Completo</label></th>
+                   <th><input type="text" placeholder="Felipe Bustamante" id="txtNombreCompleto" name="txtNombreCompleto"></th>
+                </tr>
+
+                <br><!--separacion-->
+
+                <tr>
+                    <th><label for="txtTelefono">Telefono</label></th>
+                    <th><input type="number" placeholder="Ej: 99999999" id="txtTelefono" name="txtTelefono"></th>
+                </tr>
+
+                <br><!--separacion-->
+
+                <tr>
+                   <th><label for="txtFecha">Fecha De Nacimiento</label></th>
+                   <th><input type="date" placeholder="Ej: 1990" id="txtFecha" name="txtFecha"></th>
+                </tr>
+
+                <br><!--separacion-->
+
+                <tr>
+                   <th><label for="txtDireccion">Direccion </label></th>
+                   <th><input type="text" placeholder="Ej: olivillo 0436" id="txtDireccion" name="txtDireccion"></th>
+                </tr>
+
+                <br><!--separacion-->
+
+                <tr>
+                   <th><label for="cboGenero">Genero</label></th>
+                   <th>
+                       <select name="cboGenero" id="cboGenero">
+                        <option value="">Seleccionar</option>
+                        {% for m in genero %}
+                        
+                        <option value="{{m.id}}">{{ m.generoP }}</option>
+
+                        {% endfor %}
+                    </select></th>
+                </tr>
+
+                <br><!--separacion-->
+
+                <tr>
+                   <th><label for="cboRegion">Region</label></th>
+                   <th>
+                       <select name="cboRegion" id="cboRegion">
+                       <option value="">Seleccionar</option>
+                        {% for m in region %}
+                        
+                        <option value="{{m.id}}">{{ m.nombreR }}</option>
+
+                        {% endfor %}
+                       </select></th>
+                </tr>
+
+                <br><!--separacion-->
+        
+                <tr>
+                   <th><label for="cboCuidad">Cuidad</label></th>
+                   <th>
+                       <select name="cboCuidad" id="cboCuidad">
+                            <option value="">Seleccionar</option>
+                            {% for m in ciudad %}
+                            
+                            <option value="{{m.id}}">{{ m.nombreC }}</option>
+    
+                            {% endfor %}
+                    </select></th>
+                </tr>
+
+                <br><!--separacion-->
+
+                <tr>
+                   <th><label for="cboVivienda">Tipo De Vivienda</label></th>
+                   <th>
+                       <select name="cboVivienda" id="cboVivienda">
+                        <option value="">Seleccionar</option>
+                        {% for m in vivienda %}
+                        
+                        <option value="{{m.id}}">{{ m.nombreV }}</option>
+
+                        {% endfor %}
+                    </select></th>
+                </tr>
+
+                <br><!--separacion-->
+
+   <input type="submit" name="btnGuardar" id="btnGuardar" value="Guardar">
+</form> 
+<h3>{{ mensaje }}</h3>
+
+
+{% endblock contenido %}
